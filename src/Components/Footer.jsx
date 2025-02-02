@@ -5,14 +5,14 @@ function Footer() {
   const year = currentDate.getFullYear();
   return (
     <>
-      <footer className="relative left-0 bottom-0 py-5 flex flex-col sm:flex-row items-center justify-between text-white bg-gray-800 px-4 sm:px-20">
+      <footer className="relative left-0 bottom-0 py-4 px-4 sm:py-5 sm:px-16 flex flex-col sm:flex-row items-center justify-between text-white bg-gray-800">
         {/* Copyright Text */}
-        <section className="text-lg sm:text-base text-center sm:text-left mb-4 sm:mb-0">
-          Copyright {year} | All rights reserved
+        <section className="text-sm sm:text-base text-center sm:text-left mb-3 sm:mb-0">
+          <span>&#169; Copyright {year} | All rights reserved</span>
         </section>
 
         {/* Social Media Icons */}
-        <section className="flex items-center justify-center gap-5 text-2xl sm:text-3xl text-white">
+        <section className="flex items-center justify-center gap-4 sm:gap-6 text-2xl sm:text-3xl text-white">
           <a
             href="https://www.facebook.com"
             className="hover:text-yellow-500 transition-all ease-in-out duration-300"
