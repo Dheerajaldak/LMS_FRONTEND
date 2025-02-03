@@ -176,7 +176,7 @@ const Contact = () => {
           onSubmit={onFormSubmit}
           className="flex flex-col items-center justify-center gap-3 p-6 rounded-xl shadow-lg bg-gray-800 text-white max-w-sm w-full"
         >
-          <h1 className="text-2xl font-semibold text-center text-indigo-400">Contact Us</h1>
+          <h1 className="text-2xl font-semibold text-center text-yellow-400">Contact Us</h1>
 
           <div className="flex flex-col w-full gap-2">
             <label htmlFor="name" className="text-lg font-semibold text-gray-300">
@@ -184,7 +184,7 @@ const Contact = () => {
             </label>
             <input
               type="text"
-              className="bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 px-4 py-2 rounded-md shadow-sm text-white"
+              className="bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm text-white"
               id="name"
               name="name"
               value={userInput.name}
@@ -199,7 +199,7 @@ const Contact = () => {
             </label>
             <input
               type="email"
-              className={`bg-gray-700 border ${isEmailValid ? "border-gray-600" : "border-red-500"} focus:outline-none focus:ring-2 focus:ring-indigo-500 px-4 py-2 rounded-md shadow-sm text-white`}
+              className={`bg-gray-700 border ${isEmailValid ? "border-gray-600" : "border-red-500"} focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm text-white`}
               id="email"
               name="email"
               value={userInput.email}
@@ -217,7 +217,7 @@ const Contact = () => {
             </label>
             <textarea
               onChange={handleInputChange}
-              className="bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 px-4 py-2 rounded-md shadow-sm resize-none h-32 text-white"
+              className="bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm resize-none h-32 text-white"
               id="message"
               name="message"
               value={userInput.message}
@@ -226,7 +226,7 @@ const Contact = () => {
           </div>
 
           <button
-            className="w-full bg-indigo-600 hover:bg-indigo-700 transition-all ease-in-out duration-300 rounded-md py-2 text-lg font-semibold text-white"
+            className="w-full bg-yellow-500 hover:bg-yellow-600 transition-all ease-in-out duration-300 rounded-md py-2 text-lg font-semibold text-white"
             type="submit"
           >
             Submit
@@ -238,3 +238,4 @@ const Contact = () => {
 };
 
 export default Contact;
+
