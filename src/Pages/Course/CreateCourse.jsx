@@ -275,7 +275,7 @@ function CreateCourse() {
         >
           {/* Back Button */}
           <Link
-            onClick={() => navigate("/courses")} // Use "/courses" to navigate back
+            to="/courses"
             className="absolute top-8 left-8 text-2xl text-accent cursor-pointer hidden sm:block"
           >
             <AiOutlineArrowLeft />
