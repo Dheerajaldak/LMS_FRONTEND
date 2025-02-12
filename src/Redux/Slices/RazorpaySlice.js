@@ -11,9 +11,7 @@ const initialState = {
   monthlySalesRecord: [],
 };
 
-export const getRazorpayId = createAsyncThunk(
-  "/razorpay/getId",
-  async () => {
+export const getRazorpayId = createAsyncThunk("/razorpay/getId", async () => {
     try {
       const response = await axiosInstance.get("/payments/razorpay-key");
       return response.data;
@@ -24,9 +22,7 @@ export const getRazorpayId = createAsyncThunk(
   }
 );
 
-export const purchaseCourseBundle = createAsyncThunk(
-  "/purchaseCourse",
-  async () => {
+export const purchaseCourseBundle = createAsyncThunk("/purchaseCourse", async () => {
     try {
       const response = await axiosInstance.post("/payments/subscribe");
       return response.data;
@@ -37,9 +33,7 @@ export const purchaseCourseBundle = createAsyncThunk(
   }
 );
 
-export const verifyUserPayment = createAsyncThunk(
-  "/payments/verify",
-  async (data) => {
+export const verifyUserPayment = createAsyncThunk("/payments/verify",async (data) => {
     try {
       const response = await axiosInstance.post("/payments/verify", {
         razorpay_payment_id: data.razorpay_payment_id,
@@ -54,12 +48,20 @@ export const verifyUserPayment = createAsyncThunk(
   }
 );
 
+
 export const getPaymentRecord = createAsyncThunk(
   "/payments/record",
   async () => {
     try {
-      const response = await axiosInstance.get("/payments?count=100");
-      return response.data;
+      const response = axiosInstance.get("/payments?count=100");
+      toast.promise(response,{
+        loading: "Getting the payment records",
+        success: (data)=>{
+          return data?.data?.message
+        },
+        error: "Failed to get payement records"
+      })
+      return (await response).data;
     } catch (error) {
       toast.error("Failed to fetch payment records.");
       throw error;
@@ -71,15 +73,21 @@ export const cancelCourseBundle = createAsyncThunk(
   "/payments/cancel",
   async () => {
     try {
-      const response = await axiosInstance.post("/payments/unsubscribe");
-      return response.data;
+      const response = axiosInstance.post("/payments/unsubscribe");
+      toast.promise(response,{
+        loading: "Unsubscribing the bundle",
+        success: (data)=>{
+          return data?.data?.message
+        },
+        error: "Failed to unsubscribe"
+      })
+      return (await response).data;
     } catch (error) {
-      toast.error(error?.response?.data?.message || "Unsubscribe failed.");
+      toast.error("Operation failed");
       throw error;
     }
   }
 );
-
 const razorpaySlice = createSlice({
   name: "razorpay",
   initialState,
@@ -106,12 +114,6 @@ const razorpaySlice = createSlice({
         state.finalMonths = action?.payload?.finalMonths;
         state.monthlySalesRecord = action?.payload?.monthlySalesRecord;
       })
-      .addCase(cancelCourseBundle.fulfilled, (state, action) => {
-        toast.success(action?.payload?.message);
-      })
-      .addCase(cancelCourseBundle.rejected, (state, action) => {
-        toast.error(action?.error?.message || "Failed to cancel the bundle.");
-      });
   },
 });
 

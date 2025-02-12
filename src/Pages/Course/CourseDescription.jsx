@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import HomeLayout from "../../Layouts/HomeLayout";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
@@ -8,6 +8,7 @@ function CourseDescription() {
   const { role, data } = useSelector((state) => state.auth);
   const [isSyllabusOpen, setSyllabusOpen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (state) {
@@ -57,11 +58,11 @@ function CourseDescription() {
               </div>
               <div className="flex justify-center">
                 {role === "ADMIN" || data?.subscription?.status === "ACTIVE" ? (
-                  <button className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
+                  <button onClick={()=>navigate("/course/displaylectures",{state:{...state}})}  className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
                     Watch Lectures
                   </button>
                 ) : (
-                  <button className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
+                  <button onClick={()=>navigate("/checkout")} className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
                     Subscribe Now
                   </button>
                 )}
@@ -162,7 +163,7 @@ function CourseDescription() {
         {/* Floating Subscribe Button (Sticky) */}
         <div className="fixed bottom-16 right-6 z-10">
           {role !== "ADMIN" && data?.subscription?.status !== "ACTIVE" && (
-            <button className="bg-yellow-500 text-lg rounded-xl font-semibold px-6 py-2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
+            <button onClick={()=>{navigate("/checkout")}} className="bg-yellow-500 text-lg rounded-xl font-semibold px-6 py-2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
               Purchase
             </button>
           )}

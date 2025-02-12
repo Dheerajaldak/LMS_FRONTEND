@@ -1,10 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import HomeLayout from "../../Layouts/HomeLayout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { cancelCourseBundle } from "../../Redux/Slices/RazorpaySlice";
+import { getUserData } from "../../Redux/Slices/AuthSlice";
+import toast from "react-hot-toast";
 
 function Profile() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userData = useSelector((state) => state?.auth?.data);
+
+async function handleCancellation() {
+  toast("Initiating cancellation")
+  await dispatch(cancelCourseBundle());
+  await dispatch(getUserData())
+  toast.success("Cancellation completed")
+  navigate("/")
+}
 
   return (
     <HomeLayout>
@@ -51,9 +63,9 @@ function Profile() {
             </Link>
           </div>
 
-          {/* Cancel Subscription Button */}
+          {/* Cancel Subscription Button //created insted of active */}
           {userData?.subscription?.status === "active" && (
-            <button className="w-full bg-red-600 hover:bg-red-500 transition-all duration-300 rounded-md font-semibold py-2 text-center mt-4">
+            <button onClick={handleCancellation} className="w-full bg-red-600 hover:bg-red-500 transition-all duration-300 rounded-md font-semibold py-2 text-center mt-4">
               Cancel Subscription
             </button>
           )}
