@@ -29,101 +29,90 @@ function DisplayLectures() {
   // Debugging: Check if the lecture URLs are valid
   const getVideoUrl = () => {
     const videoUrl = lectures[currentVideo]?.lectures?.secure_url;
-    // console.log("Current Video URL:", videoUrl); // Debugging step to log the URL
     return videoUrl;
   };
 
   return (
     <HomeLayout>
       <div className="flex flex-col gap-10 items-center justify-center min-h-[90vh] py-10 text-white mx-[5%]">
-        <div className="text-center text-2xl font-semibold text-yellow-500">
-          Course Name: {state?.title}
+        <div className="text-center text-3xl font-semibold text-yellow-500">
+          {state?.title}
         </div>
 
         {lectures && lectures.length > 0 ? (
-          <div className="flex justify-center gap-10 w-full">
+          <div className="flex flex-col lg:flex-row justify-between gap-10 w-full max-w-screen-xl">
             {/* Left section for playing videos and displaying course details */}
-            <div className="space-y-5 w-[28rem] p-2 rounded-lg shadow-[0_0_10px_black]">
+            <div className="space-y-5 lg:w-[60%] p-4 rounded-lg shadow-xl bg-gray-800">
               {/* Check if video URL exists before rendering */}
               {getVideoUrl() ? (
-                <video
-                  src={getVideoUrl()}
-                  className="object-fill rounded-tl-lg rounded-tr-lg w-full"
-                  controls
-                  disablePictureInPicture
-                  muted
-                  controlsList="nodownload"
-                  onError={(e) => {
-                    console.error("Error loading video for URL: ", e.target.src);
-                    alert("There was an error loading the video. Please try again later.");
-                  }}
-                >
-                  <source
+                <div className="relative w-full pb-[56.25%]">
+                  <video
                     src={getVideoUrl()}
-                    type="video/mp4"
+                    className="absolute top-0 left-0 w-full h-full object-cover rounded-tl-lg rounded-tr-lg"
+                    controls
+                    disablePictureInPicture
+                    muted
+                    controlsList="nodownload"
                     onError={(e) => {
-                      console.error("Error loading video:", e.target.src);
-                      alert("Error loading video.");
+                      console.error("Error loading video for URL: ", e.target.src);
+                      alert("There was an error loading the video. Please try again later.");
                     }}
                   />
-                </video>
+                </div>
               ) : (
                 <div>Video could not be loaded. Please try again later.</div>
               )}
 
-              <div>
-                <h1>
-                  <span className="text-yellow-500">Title: </span>
-                  {lectures[currentVideo]?.title}
-                </h1>
-                <p>
-                  <span className="text-yellow-500 line-clamp-4">Description: </span>
-                  {lectures[currentVideo]?.description}
-                </p>
+              <div className="text-lg">
+                <h1 className="font-semibold text-yellow-500">Title:</h1>
+                <p>{lectures[currentVideo]?.title}</p>
+                <h2 className="font-semibold text-yellow-500 mt-4">Description:</h2>
+                <p className="text-gray-400 line-clamp-4">{lectures[currentVideo]?.description}</p>
               </div>
             </div>
 
             {/* Right section for displaying list of lectures */}
-            <ul className="w-[28rem] p-2 rounded-lg shadow-[0_0_10px_black] space-y-4">
+            <ul className="lg:w-[35%] w-full p-4 rounded-lg shadow-xl bg-gray-800 space-y-4">
               <li className="font-semibold text-xl text-yellow-500 flex items-center justify-between">
-                <p>Lectures list</p>
+                <p>Lectures List</p>
                 {role === "ADMIN" && (
                   <button
                     onClick={() => navigate("/course/addlecture", { state: { ...state } })}
-                    className="btn-primary px-2 py-1 rounded-md font-semibold text-sm"
+                    className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-md font-semibold text-sm transition-all"
                   >
-                    Add new lecture
+                    Add New Lecture
                   </button>
                 )}
               </li>
               {lectures &&
-                lectures.map((lecture, idx) => {
-                  return (
-                    <li className="space-y-2" key={`${lecture._id}-${idx}`}> {/* Unique key with _id and idx */}
-                      <p className="cursor-pointer" onClick={() => setCurrentVideo(idx)}>
-                        <span>Lecture {idx + 1}: </span>
-                        {lecture?.title}
-                      </p>
-                      {role === "ADMIN" && (
-                        <button
-                          onClick={() => onLectureDelete(state?._id, lecture._id)} // Corrected lectureId passing
-                          className="btn-accent px-2 py-1 rounded-md font-semibold text-sm"
-                        >
-                          Delete lecture
-                        </button>
-                      )}
-                    </li>
-                  );
-                })}
+                lectures.map((lecture, idx) => (
+                  <li className="space-y-2 bg-gray-700 p-3 rounded-md shadow-md" key={`${lecture._id}-${idx}`}>
+                    <p
+                      className="cursor-pointer text-yellow-400 hover:underline"
+                      onClick={() => setCurrentVideo(idx)}
+                    >
+                      <span>Lecture {idx + 1}: </span>
+                      {lecture?.title}
+                    </p>
+                    {role === "ADMIN" && (
+                      <button
+                        onClick={() => onLectureDelete(state?._id, lecture._id)}
+                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded-md font-semibold text-sm transition-all"
+                      >
+                        Delete Lecture
+                      </button>
+                    )}
+                  </li>
+                ))}
             </ul>
           </div>
         ) : (
           role === "ADMIN" && (
             <button
               onClick={() => navigate("/course/addlecture", { state: { ...state } })}
-              className="btn-primary px-2 py-1 rounded-md font-semibold text-sm"
+              className="bg-yellow-500 hover:bg-yellow-600 text-white py-2 px-4 rounded-md font-semibold text-sm transition-all"
             >
-              Add new lecture
+              Add New Lecture
             </button>
           )
         )}
@@ -133,10 +122,3 @@ function DisplayLectures() {
 }
 
 export default DisplayLectures;
-
-
-
-
-
-
-

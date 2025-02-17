@@ -1,4 +1,5 @@
-import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+import {  BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
+import { FaGithub } from "react-icons/fa";
 
 function Footer() {
   const currentDate = new Date();
@@ -14,25 +15,29 @@ function Footer() {
         {/* Social Media Icons */}
         <section className="flex items-center justify-center gap-4 sm:gap-6 text-2xl sm:text-3xl text-white">
           <a
-            href="https://www.facebook.com"
+            href="https://github.com/Dheerajaldak"
+            target="_blank" rel="noopener noreferrer"
             className="hover:text-yellow-500 transition-all ease-in-out duration-300"
           >
-            <BsFacebook />
+            <FaGithub />
           </a>
           <a
             href="https://www.instagram.com"
+            target="_blank" rel="noopener noreferrer"
             className="hover:text-yellow-500 transition-all ease-in-out duration-300"
           >
             <BsInstagram />
           </a>
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/in/dheeraj-aldak/"
+             target="_blank" rel="noopener noreferrer"
             className="hover:text-yellow-500 transition-all ease-in-out duration-300"
           >
             <BsLinkedin />
           </a>
           <a
             href="https://www.twitter.com"
+             target="_blank" rel="noopener noreferrer"
             className="hover:text-yellow-500 transition-all ease-in-out duration-300"
           >
             <BsTwitter />
