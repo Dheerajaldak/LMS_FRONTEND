@@ -9,7 +9,7 @@ function RequireAuth({ allowedRoles }) {
   ) : isLoggedIn ? (
     <Navigate to="/denied" />
   ) : (
-    <Navigate to="/login" />
+    <Navigate to="/login" />  
   );
 }
 

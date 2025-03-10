@@ -32,7 +32,7 @@ const CourseList = () => {
         
       <h1 className="font-semibold text-center text-2xl sm:text-4xl">
           Explore the courses made by{" "}
-          <span className="font-bold text-yellow-500">Industry experts</span>
+          <span className="text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text font-bold">Industry experts</span>
         </h1>
 
         {/* Search Bar */}
@@ -79,7 +79,7 @@ const CourseList = () => {
 
         
 
-        <div className="mb-10 flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-14">
+        <div className="mb-10 flex flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 lg:gap-8">
           {filteredCourses?.map((element) => (
             <CourseCard key={element._id} data={element} />
           ))}

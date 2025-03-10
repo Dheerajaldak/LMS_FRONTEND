@@ -43,14 +43,13 @@
 //           </div>
 //         </div>
 //       </div>
-      
+
 //     </HomeLayout>
 //   );
 // }
 
 // export default HomePage;
 import React, { useEffect } from "react";
-import HomeLayout from "../Layouts/HomeLayout";
 import { Link } from "react-router-dom";
 import HomePageImage from "../Assets/Images/elearning.png";
 import { gsap } from "gsap";
@@ -61,17 +60,17 @@ function HomePage() {
     const text = document.querySelector(".homepage-description");
     const textContent = text.textContent;
     text.textContent = "";
-  
+
     let i = 0;
     const typingEffect = () => {
       text.textContent += textContent.charAt(i);
       i++;
       if (i < textContent.length) {
-        setTimeout(typingEffect, 50);  // Reduced delay for faster typing effect (from 100 to 50 ms)
+        setTimeout(typingEffect, 50); // Reduced delay for faster typing effect (from 100 to 50 ms)
       }
     };
     typingEffect();
-  
+
     // Animating the Image
     gsap.from(".homepage-image", {
       opacity: 0,
@@ -79,7 +78,7 @@ function HomePage() {
       duration: 1.5,
       ease: "power3.out",
     });
-  
+
     // Animating the Title
     gsap.from(".homepage-title", {
       opacity: 0,
@@ -88,7 +87,7 @@ function HomePage() {
       delay: 0.5,
       ease: "power3.out",
     });
-  
+
     // Animating the Buttons
     // gsap.from(".homepage-button", {
     //   opacity: 0,            // Start with opacity 0 (invisible)
@@ -100,10 +99,9 @@ function HomePage() {
     //   stagger: 0.3,          // Stagger effect to animate buttons one by one
     // });
   }, []);
-  
 
   return (
-    <HomeLayout>
+    <>
       <div className="pt-10 text-white flex flex-col sm:flex-row items-center justify-center gap-10 mx-4 sm:mx-16 h-[90vh]">
         {/* Image Section */}
         <div className="w-full sm:w-1/2 flex items-center justify-center order-1 sm:order-2 mt-6 sm:mt-0">
@@ -118,16 +116,18 @@ function HomePage() {
         <div className="w-full sm:w-1/2 space-y-6 text-center sm:text-left order-2 sm:order-1">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold homepage-title">
             Find out best&nbsp;
-            <span className="text-yellow-500 font-bold">Online Courses</span>
+            <span className="text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text font-bold">
+              Online Courses
+            </span>
           </h1>
-          
+
           {/* Paragraph with Typing Effect */}
           <p className="homepage-description text-lg sm:text-xl lg:text-2xl text-gray-200 tracking-wide leading-relaxed">
             We have a large library of courses taught by highly skilled and
-            qualified faculties at a very affordable cost. Explore the best learning
-            opportunities online.
+            qualified faculties at a very affordable cost. Explore the best
+            learning opportunities online.
           </p>
-          
+
           <div className="mt-6 w-full sm:w-auto flex flex-col sm:flex-row items-center sm:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
             {/* Buttons Section */}
             <div className="w-full flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
@@ -145,7 +145,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-    </HomeLayout>
+    </>
   );
 }
 
