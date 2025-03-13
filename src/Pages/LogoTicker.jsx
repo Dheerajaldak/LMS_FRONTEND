@@ -17,21 +17,13 @@ const logos = [
   { name: "Google", image: Google },
   { name: "Adobe", image: Ado },
   { name: "Paypal", image: Pay },
-  { name: "Udemy", image: udemy },
-  { name: "Razorpay", image: Raz },
+  // { name: "Udemy", image: udemy },
+  // { name: "Razorpay", image: Raz },
 ];
 
 const LogoTicker = () => {
   return (
-    <section className="py-24 overflow-x-hidden">
-      <div className="container">
-        <h3 className="text-center text-white/50 text-xl">
-          Already chosen by these market leaders
-        </h3>
-        <div
-          className="overflow-hidden mt-12 [mask-image:linear-gradient(to_right, transparent,black_90%,transparent)]"
-          
-        >
+    <section className=" overflow-x-hidden">
           <motion.div
             animate={{
               x: "-50%",
@@ -56,8 +48,6 @@ const LogoTicker = () => {
               </React.Fragment>
             ))}
           </motion.div>
-        </div>
-      </div>
     </section>
   );
 };

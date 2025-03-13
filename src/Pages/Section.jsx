@@ -56,8 +56,8 @@ const Section = () => {
   const maskImage = useMotionTemplate`radial-gradient(40% 50% at ${mouseX}px ${mouseY}px, black, transparent)`;
 
   return (
-    <section className="py-20 md:py-24" ref={sectionRef}>
-      <div className="container ">
+    <section className="py-20 md:py-20" ref={sectionRef}>
+      <div className="">
         <motion.div
           ref={borderedDivRef} // Added ref to the motion.div
           className="border border-white/15 py-24 rounded-xl overflow-hidden relative group"

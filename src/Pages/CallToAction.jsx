@@ -25,7 +25,7 @@ function CallToAction() {
   }, [isHovered]); // Dependency on isHovered
 
   return (
-    <section className="py-24">
+    <section className="py-6">
       <div className="overflow-x-clip p-4 flex">
         <motion.div
           ref={scope}
