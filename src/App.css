@@ -1,3 +1,4 @@
+
 /* company slide effect starts <Companies/> */
 @keyframes slide {
   0% {
@@ -23,3 +24,18 @@
 }
 /* company slide effect ends */
 
+/* CSS animation for scrolling the logos */
+@keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+  
+  

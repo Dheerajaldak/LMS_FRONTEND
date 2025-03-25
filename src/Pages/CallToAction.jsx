@@ -1,5 +1,6 @@
 import { motion, useAnimate } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
 function CallToAction() {
   const [isHovered, setIsHovered] = useState(false);
@@ -29,14 +30,14 @@ function CallToAction() {
       <div className="overflow-x-clip p-4 flex">
         <motion.div
           ref={scope}
-          className="flex flex-none gap-16 pr-16 text-7xl md:text-8xl font-medium group cursor-pointer"
+          className="flex flex-none gap-16 pr-16 text-5xl md:text-7xl font-medium group cursor-pointer"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           {Array.from({ length: 10 }).map((_, i) => (
             <div key={i} className="flex items-center gap-16">
-              <span className="text-lime-400 text-7xl">&#10038;</span>
-              <span className="group-hover:text-lime-400">Try it for free</span>
+              <span className="text-purple-400 text-6xl">&#10038;</span>
+              <span className="group-hover:text-blue-300"><Link to="/checkout">Try it for free</Link> </span>
             </div>
           ))}
         </motion.div>

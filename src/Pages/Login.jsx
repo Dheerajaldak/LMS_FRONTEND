@@ -185,79 +185,81 @@ const Login = () => {
 
   return (
     <HomeLayout>
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-800 via-gray-900 to-black p-4">
-        <form
-          noValidate
-          onSubmit={onLogin}
-          className="flex flex-col items-center justify-center gap-4 p-6 rounded-xl shadow-lg bg-gray-800 text-white max-w-sm w-full"
-        >
-          <h1 className="text-2xl font-semibold text-center text-yellow-400 mb-3">
-            Login Page
-          </h1>
+    <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-to-br from-gray-800 via-gray-900 to-black dark:bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900">
+  <form
+    noValidate
+    onSubmit={onLogin}
+    className="flex flex-col items-center justify-center gap-4 p-6 rounded-xl shadow-lg bg-gray-800 text-white max-w-sm w-full dark:bg-gray-900 dark:text-gray-200"
+  >
+    <h1 className="text-2xl font-semibold text-center text-yellow-400 mb-3 dark:text-yellow-300">
+      Login Page
+    </h1>
 
-          <div className="flex flex-col w-full gap-2">
-            <label htmlFor="email" className="text-lg font-semibold text-gray-300">
-              Email
-            </label>
-            <input
-              type="email"
-              className={`bg-gray-700 border ${isEmailValid ? "border-gray-600" : "border-red-500"} focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm text-white`}
-              id="email"
-              name="email"
-              value={loginData.email}
-              placeholder="Enter your email"
-              onChange={handleUserInput}
-            />
-            {!isEmailValid && (
-              <p className="text-red-500 text-sm mt-1">Please enter a valid email</p>
-            )}
-          </div>
+    <div className="flex flex-col w-full gap-2">
+      <label htmlFor="email" className="text-lg font-semibold text-gray-300 dark:text-gray-400">
+        Email
+      </label>
+      <input
+        type="email"
+        className={`bg-gray-700 border ${
+          isEmailValid ? "border-gray-600" : "border-red-500"
+        } focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm text-white dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300`}
+        id="email"
+        name="email"
+        value={loginData.email}
+        placeholder="Enter your email"
+        onChange={handleUserInput}
+      />
+      {!isEmailValid && (
+        <p className="text-red-500 text-sm mt-1">Please enter a valid email</p>
+      )}
+    </div>
 
-          <div className="flex flex-col w-full gap-2 relative">
-            <label htmlFor="password" className="text-lg font-semibold text-gray-300">
-              Password
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                className="bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm w-full"
-                id="password"
-                name="password"
-                value={loginData.password}
-                placeholder="Enter your password"
-                onChange={handleUserInput}
-              />
-              {/* Only show the eye button when the password field has value */}
-              {loginData.password && (
-                <span
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <AiOutlineEyeInvisible size={20} />
-                  ) : (
-                    <AiOutlineEye size={20} />
-                  )}
-                </span>
-              )}
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-md py-2 text-lg font-semibold text-white mt-4"
+    <div className="flex flex-col w-full gap-2 relative">
+      <label htmlFor="password" className="text-lg font-semibold text-gray-300 dark:text-gray-400">
+        Password
+      </label>
+      <div className="relative">
+        <input
+          type={showPassword ? "text" : "password"}
+          className="bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 px-4 py-2 rounded-md shadow-sm w-full dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300"
+          id="password"
+          name="password"
+          value={loginData.password}
+          placeholder="Enter your password"
+          onChange={handleUserInput}
+        />
+        {/* Only show the eye button when the password field has value */}
+        {loginData.password && (
+          <span
+            className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer"
+            onClick={() => setShowPassword(!showPassword)}
           >
-            Login
-          </button>
-
-          <p className="text-center mt-2">
-            Don’t have an account?
-            <Link to="/signup" className="text-yellow-400 hover:underline cursor-pointer">
-              Signup
-            </Link>
-          </p>
-        </form>
+            {showPassword ? (
+              <AiOutlineEyeInvisible size={20} />
+            ) : (
+              <AiOutlineEye size={20} />
+            )}
+          </span>
+        )}
       </div>
+    </div>
+
+    <button
+      type="submit"
+      className="w-full bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-md py-2 text-lg font-semibold text-white mt-4 dark:bg-yellow-500 dark:hover:bg-yellow-400"
+    >
+      Login
+    </button>
+
+    <p className="text-center mt-2 dark:text-gray-400">
+      Don’t have an account?
+      <Link to="/signup" className="text-yellow-400 hover:underline cursor-pointer dark:text-yellow-300">
+        Signup
+      </Link>
+    </p>
+  </form>
+</div>
     </HomeLayout>
   );
 };

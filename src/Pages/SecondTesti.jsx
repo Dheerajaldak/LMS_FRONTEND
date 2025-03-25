@@ -11,30 +11,31 @@ import avatar4 from "../../src/Assets/Avatar/avatar-4.png";
 // Testimonials data
 const testimonials = [
   {
-    quote: "This product has completely transformed how I manage my projects and deadlines",
-    name: "Sophia Perez",
-    title: "Director @ Quantum",
+    quote: "This platform has completely changed the way I deliver lessons and engage with students.",
+    name: "Emma Roberts",
+    title: "Teacher @ Green Valley High",
     avatarImg: avatar1,
   },
   {
-    quote: "These AI tools have completely revolutionized our SEO entire strategy overnight",
-    name: "Jamie Lee",
-    title: "Founder @ Pulse",
+    quote: "Using these interactive tools has transformed the way we conduct online courses and assessments.",
+    name: "John Smith",
+    title: "Instructor @ LearnX Academy",
     avatarImg: avatar2,
   },
   {
-    quote: "The user interface is so intuitive and easy to use, it has saved us countless hours",
-    name: "Alisa Hester",
-    title: "Product @ Innovate",
+    quote: "The interface is so user-friendly, and the resources provided have made learning more accessible for all my students.",
+    name: "Olivia Davis",
+    title: "Professor @ Tech University",
     avatarImg: avatar3,
   },
   {
-    quote: "Our team's productivity has increased significantly since we started using this tool",
-    name: "Alec Whitten",
-    title: "CTO @ Tech solution",
+    quote: "Our course completion rates have improved significantly thanks to this powerful LMS tool.",
+    name: "Liam Williams",
+    title: "Curriculum Coordinator @ EduGlobal",
     avatarImg: avatar4,
   },
 ];
+
 
 const SecondTesti = () => {
   const [selectedTestimonialIndex, setSelectedTestimonialIndex] = useState(0);
@@ -52,8 +53,8 @@ const SecondTesti = () => {
   }, []);
 
   return (
-    <section className="py-5 sm:py-10 px-4 sm:px-8 md:px-20 bg-[#f4f7fa] dark:bg-[#1a202c] transition-colors duration-300">
-      <div className="max-w-7xl mx-auto">
+    <section className="h-[300px] py-10 sm:py-10 px-4 sm:px-8 md:px-20 bg-[#f4f7fa] dark:bg-[#1a202c] transition-colors duration-300">
+      <div className="max-w-7xl mx-auto ">
         <div 
               className="relative rounded-3xl px-6 md:px-10 lg:px-16 py-16 lg:py-16 border-2 border-[#0e1c30] dark:border-[#4a5568] dark:bg-[#2d3748] dark:text-white transition-all duration-300 hover:shadow-lg flex flex-col items-center md:flex-row gap-3"
               // className="relative rounded-3xl px-6 md:px-10 lg:px-16 py-16 lg:py-16 border-4 flex flex-col items-center md:flex-row gap-3 lg:mx-20 hover:border-purple-300 transition-all duration-500"
@@ -99,7 +100,7 @@ const SecondTesti = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={testimonial.name}
-                className={`w-1.5 h-1.5 rounded-full cursor-pointer transition-all duration-300 ${
+                className={`w-2 h-2 rounded-full cursor-pointer transition-all duration-300 ${
                   selectedTestimonialIndex === index
                     ? "bg-purple-400"
                     : "bg-gray-200"

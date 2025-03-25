@@ -14,7 +14,7 @@ const TextSlide = () => {
   return (
     <section className="section">
       <h2
-        className="text-4xl md:text-7xl lg:text-8xl flex flex-col overflow-hidden tracking-tighter"
+        className="text-4xl md:text-6xl lg:text-6xl flex flex-col overflow-hidden tracking-tighter"
         ref={titleRef}
       >
         <motion.span

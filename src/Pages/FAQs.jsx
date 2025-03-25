@@ -140,34 +140,34 @@ export default function FAQs() {
   };
 
   return (
-    <section className=" justify-items-center">
-      <div className="w-full max-w-[90rem] py-3 max-xl:px-16 max-xl:py-24 max-lg:px-8 max-md:px-6 dark:bg-[#1a202c]">
-        <h2 className="text-center text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-white ">
+    <section className="justify-items-center">
+      <div className="w-full max-w-[90rem] py-3 max-xl:px-16 max-xl:py-24 max-lg:px-8 max-md:px-6 bg-[#f4f7fa] dark:bg-[#1a202c] transition-colors duration-300">
+        <h2 className="text-center text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-white">
           Frequently Asked Questions
-        </h2> 
+        </h2>
         <ul className="mb-16 flex flex-wrap justify-center gap-x-3 gap-y-4 max-lg:mb-18 max-md:justify-start">
           {frequentlyAskedQuestions.map((obj) => (
             <li key={obj.id}>
               <button
                 className={`
-          border-gray-300 dark:border-gray-700
-          text-gray-800 dark:text-white
-          transition-all
-          cursor-pointer
-          rounded-full
-          border-2
-          px-8 py-3.5 text-lg
-          max-xl:px-6 max-xl:text-base max-sm:px-3 max-sm:py-2 max-sm:text-xs
-          sm:px-4 sm:py-2 sm:text-sm
-          ${
-            obj.category === category &&
-            "bg-gray-500 text-white border-gray-500 dark:bg-gray-700 dark:border-gray-700"
-          }
-          ${
-            obj.category !== category &&
-            "hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
-          }
-        `}
+                  border-gray-300 dark:border-gray-700
+                  text-gray-800 dark:text-white
+                  transition-all
+                  cursor-pointer
+                  rounded-full
+                  border-2
+                  px-8 py-3.5 text-lg
+                  max-xl:px-6 max-xl:text-base max-sm:px-3 max-sm:py-2 max-sm:text-xs
+                  sm:px-4 sm:py-2 sm:text-sm
+                  ${
+                    obj.category === category &&
+                    "bg-gray-500 text-white border-gray-500 dark:bg-gray-700 dark:border-gray-700"
+                  }
+                  ${
+                    obj.category !== category &&
+                    "hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+                  }
+                `}
                 onClick={() => handleCategoryClick(obj.category)}
               >
                 {obj.category}

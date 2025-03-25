@@ -42,7 +42,7 @@ function DisplayLectures() {
         {lectures && lectures.length > 0 ? (
           <div className="flex flex-col lg:flex-row justify-between gap-10 w-full max-w-screen-xl">
             {/* Left section for playing videos and displaying course details */}
-            <div className="space-y-5 lg:w-[60%] p-4 rounded-lg shadow-xl bg-gray-800">
+            <div className="space-y-5 lg:w-[60%] p-4 rounded-lg shadow-xl dark:bg-gray-800 bg-white">
               {/* Check if video URL exists before rendering */}
               {getVideoUrl() ? (
                 <div className="relative w-full pb-[56.25%]">
@@ -72,7 +72,7 @@ function DisplayLectures() {
             </div>
 
             {/* Right section for displaying list of lectures */}
-            <ul className="lg:w-[35%] w-full p-4 rounded-lg shadow-xl bg-gray-800 space-y-4">
+            <ul className="lg:w-[35%] w-full p-4 rounded-lg shadow-xl dark:bg-gray-800 bg-white space-y-4">
               <li className="font-semibold text-xl text-yellow-500 flex items-center justify-between">
                 <p>Lectures List</p>
                 {role === "ADMIN" && (
@@ -86,7 +86,10 @@ function DisplayLectures() {
               </li>
               {lectures &&
                 lectures.map((lecture, idx) => (
-                  <li className="space-y-2 bg-gray-700 p-3 rounded-md shadow-md" key={`${lecture._id}-${idx}`}>
+                  <li
+                    className="space-y-2 dark:bg-gray-700 bg-gray-700 p-3 rounded-md shadow-md"
+                    key={`${lecture._id}-${idx}`}
+                  >
                     <p
                       className="cursor-pointer text-yellow-400 hover:underline"
                       onClick={() => setCurrentVideo(idx)}

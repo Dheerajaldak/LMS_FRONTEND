@@ -1,50 +1,48 @@
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import { FiArrowRight } from "react-icons/fi";
-
- const Button = () => {
+import { Link as RouterLink } from "react-router-dom";
+const Button = () => {
   return (
-    <section className="bg-neutral-950 p-4 md:p-8">
+    <section className=" p-4 md:p-8 ">
       <div className="mx-auto max-w-5xl">
         <Link
           heading="About"
-          subheading="Learn what we do here"
+          subheading="Discover how our LMS transforms learning"
           imgSrc="../src/Assets/headshots/img-1.webp"
-        //   href="#"
+          to="/about"
         />
-      
+
         <Link
           heading="Clients"
-          subheading="We work with great people"
+          subheading="We empower organizations worldwide"
           imgSrc="../src/Assets/headshots/img-2.webp"
-        //   href="#"
+          to="/courses"
         />
         <Link
-          heading="Portfolio"
-          subheading="Our work speaks for itself"
+          heading="Courses"
+          subheading="Explore a wide range of learning modules"
           imgSrc="../src/Assets/headshots/img-3.webp"
-        //   href="#"
+          to="/courses"
         />
         <Link
-          heading="Careers"
-          subheading="We want cool people"
+          heading="Contact Us"
+          subheading="Our team is ready to assist you"
           imgSrc="../src/Assets/headshots/img-4.webp"
-        //   href="#"
+          to="/contact"
         />
         <Link
           heading="Fun"
           subheading="Incase you're bored"
           imgSrc="../src/Assets/headshots/img-5.webp"
-        //   href="#"
+          to="/"
         />
-        
       </div>
     </section>
   );
 };
 
-
-const Link = ({ heading, imgSrc, subheading, href }) => {
+const Link = ({ heading, imgSrc, subheading, to }) => {
   const ref = useRef(null);
 
   const x = useMotionValue(0);
@@ -73,47 +71,47 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
   };
 
   return (
-
-    <motion.a
-      href={href}
+    <motion.div
       ref={ref}
       onMouseMove={handleMouseMove}
       initial="initial"
       whileHover="whileHover"
-      className="group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+      className=" group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
     >
-      <div>
-        <motion.span
-          variants={{
-            initial: { x: 0 },
-            whileHover: { x: -16 },
-          }}
-          transition={{
-            type: "spring",
-            staggerChildren: 0.075,
-            delayChildren: 0.25,
-          }}
-          className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
-        >
-          {heading.split("").map((l, i) => (
-            <motion.span
-              variants={{
-                initial: { x: 0 },
-                whileHover: { x: 16 },
-              }}
-              transition={{ type: "spring" }}
-              className="inline-block"
-              key={i}
-            >
-              {l}
-            </motion.span>
-          ))}
-        </motion.span>
-        <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
-          {subheading} 
-        </span>
-      </div>
-
+      
+      <RouterLink to={to} className="block">
+        <div>
+          <motion.span
+            variants={{
+              initial: { x: 0 },
+              whileHover: { x: -16 },
+            }}
+            transition={{
+              type: "spring",
+              staggerChildren: 0.075,
+              delayChildren: 0.25,
+            }}
+            className="relative z-10 block text-4xl font-bold text-neutral-700 dark:text-white transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+          >
+            {heading.split("").map((l, i) => (
+              <motion.span
+                variants={{
+                  initial: { x: 0 },
+                  whileHover: { x: 16 },
+                }}
+                transition={{ type: "spring" }}
+                className="inline-block"
+                key={i}
+              >
+                {l}
+              </motion.span>
+            ))}
+          </motion.span>
+          <span className="relative z-10 mt-2 block text-base  dark:text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
+            {subheading}
+          </span>
+        </div>
+      </RouterLink>
       <motion.img
         style={{
           top,
@@ -146,10 +144,8 @@ const Link = ({ heading, imgSrc, subheading, href }) => {
         className="relative z-10 p-4"
       >
         <FiArrowRight className="text-5xl text-neutral-50" />
-        
       </motion.div>
-    </motion.a>
-
+    </motion.div>
   );
 };
-export default Button
+export default Button;

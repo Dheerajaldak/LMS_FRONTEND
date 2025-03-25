@@ -8,42 +8,41 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    text: "This product has completely transformed how I manage my projects and deadlines",
+    text: "This learning platform has revolutionized the way I approach skill development and training sessions.",
     name: "Sophia Perez",
-    title: "Director @ Quantum",
+    title: "Head of Learning @ Quantum",
     avatarImg: avatar1,
   },
   {
-    text: "These AI tools have completely revolutionized our SEO entire strategy overnight",
+    text: "The interactive modules and assessments have taken our team's learning experience to new heights.",
     name: "Jamie Lee",
-    title: "Founder @ Pulse",
+    title: "CEO @ Pulse",
     avatarImg: avatar2,
   },
   {
-    text: "The user interface is so intuitive and easy to use, it has saved us countless hours",
+    text: "The content delivery system is seamless, and the real-time feedback is invaluable for learners.",
     name: "Alisa Hester",
-    title: "Product @ Innovate",
+    title: "Learning Specialist @ Innovate",
     avatarImg: avatar3,
   },
   {
-    text: "Our team's productivity has increased significantly since we started using this tool",
+    text: "We’ve seen tremendous growth in our employee engagement and knowledge retention rates.",
     name: "Alec Whitten",
-    title: "CTO @ Tech Solutions",
+    title: "CLO @ Tech Solutions",
     avatarImg: avatar4,
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="py-20">
+    <section className="py-20 transition-colors duration-300">
       <div className="mx-auto px-2">
        
-        <h2 className="text-5xl text-center tracking-tighter font-medium text-white">
+        <h2 className="text-5xl text-center tracking-tighter font-medium text-gray-900 dark:text-white">
           Beyond Expectations.
         </h2>
-        <p className="text-white/70 text-lg md:text-xl text-center mt-5">
-          Our revolutionary AI SEO tools have transformed our clients'
-          strategies.
+        <p className="text-gray-700 dark:text-gray-300 text-lg md:text-xl text-center mt-5">
+          Our innovative LMS platform has reshaped the learning experience for countless organizations.
         </p>
         <div
           className="flex overflow-hidden mt-10"
@@ -66,7 +65,7 @@ const Testimonials = () => {
             {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div
                 key={`${testimonial.name}-${index}`} 
-                className="border border-white/15 p-6 md:p-10 rounded-xl bg-[linear-gradient(to_bottom_left,rgb(140,69,255,0.1),rgb(255,255,255,0.05))]"
+                className="border border-white/15 p-6 md:p-10 rounded-xl bg-[linear-gradient(to_bottom_left,rgb(140,69,255,0.1),rgb(255,255,255,0.05))] text-gray-900 dark:text-white"
               >
                 <div className="text-lg tracking-tight md:text-2xl">
                   "{testimonial.text}"
@@ -78,12 +77,12 @@ const Testimonials = () => {
                       alt={`Avatar for ${testimonial.name}`}
                       width={44}
                       height={44}
-                      className="h-11 w-11 rounded-lg grayscale"
+                      className="h-11 w-11 rounded-lg "
                     />
                   </div>
                   <div className="">
                     <div>{testimonial.name}</div>
-                    <div className="text-white/50 text-sm">
+                    <div className="text-gray-500 dark:text-gray-400 text-sm">
                       {testimonial.title}
                     </div>
                   </div>

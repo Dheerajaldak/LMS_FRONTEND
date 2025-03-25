@@ -21,7 +21,8 @@ function CourseDescription() {
   if (loading) {
     return (
       <HomeLayout>
-        <div className="min-h-screen flex justify-center items-center bg-gray-900 text-white">
+        <div className="min-h-screen flex justify-center items-center dark:bg-gray-900 bg-[#f4f7fa] text-white gap-4">
+          <span className="loading loading-ring loading-xl"></span>{" "}
           <p className="text-xl">Loading...</p>
         </div>
       </HomeLayout>
@@ -30,8 +31,14 @@ function CourseDescription() {
 
   return (
     <HomeLayout>
-      <div className="min-h-screen pt-16 px-6 sm:px-16 lg:px-32 flex flex-col items-center justify-start bg-gray-900 text-white">
+      <div className="min-h-screen pt-16 px-6 sm:px-16 lg:px-32 flex flex-col items-center justify-start bg-[#f4f7fa] dark:bg-gray-900 text-gray-700  dark:text-white ">
         {/* Course Thumbnail and Info Section */}
+        <h1 className="text-4xl md:text-5xl   font-extrabold tracking-tight text-neutral-900 dark:text-white">
+          <span className="">Course</span>{" "}
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600">
+           Overview
+          </span>
+        </h1>
         <div className="w-full max-w-screen-xl grid grid-cols-1 lg:grid-cols-2 gap-10 py-10">
           <div className="space-y-6">
             <div className="relative group">
@@ -47,7 +54,7 @@ function CourseDescription() {
                   <span className="font-semibold text-yellow-400">
                     Total Lectures:{" "}
                   </span>
-                  {state?.numberOfLectures || "N/A"}
+                  {state?.numbersOfLectures || "N/A"}
                 </p>
                 <p className="text-gray-300">
                   <span className="font-semibold text-yellow-400">
@@ -58,11 +65,21 @@ function CourseDescription() {
               </div>
               <div className="flex justify-center">
                 {role === "ADMIN" || data?.subscription?.status === "ACTIVE" ? (
-                  <button onClick={()=>navigate("/course/displaylectures",{state:{...state}})}  className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
+                  <button
+                    onClick={() =>
+                      navigate("/course/displaylectures", {
+                        state: { ...state },
+                      })
+                    }
+                    className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl"
+                  >
                     Watch Lectures
                   </button>
                 ) : (
-                  <button onClick={()=>navigate("/checkout")} className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
+                  <button
+                    onClick={() => navigate("/checkout")}
+                    className="bg-yellow-500 text-lg rounded-md font-semibold px-6 py-3 w-full sm:w-3/4 lg:w-1/2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl"
+                  >
                     Subscribe Now
                   </button>
                 )}
@@ -83,7 +100,7 @@ function CourseDescription() {
         </div>
 
         {/* Course Syllabus Section */}
-        <div className="mt-12 w-full max-w-screen-lg text-center bg-gray-800 p-8 rounded-lg shadow-lg">
+        <div className="mt-12 w-full max-w-screen-lg text-center dark:bg-gray-800 bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl text-yellow-400 font-bold mb-6">
             Course Syllabus
           </h2>
@@ -103,7 +120,7 @@ function CourseDescription() {
         </div>
 
         {/* Instructor Info Section */}
-        <div className="mt-12 w-full max-w-screen-lg text-center bg-gray-800 p-8 rounded-lg shadow-lg">
+        <div className="mt-12 w-full max-w-screen-lg text-center dark:bg-gray-800 bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl text-yellow-400 font-bold mb-6">
             Instructor Info
           </h2>
@@ -122,7 +139,7 @@ function CourseDescription() {
         </div>
 
         {/* Reviews and Ratings Section */}
-        <div className="mt-12 w-full max-w-screen-lg text-center bg-gray-800 p-8 rounded-lg shadow-lg">
+        <div className="mt-12 w-full max-w-screen-lg text-center dark:bg-gray-800 bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl text-yellow-400 font-bold mb-6">
             Reviews & Ratings
           </h2>
@@ -138,7 +155,7 @@ function CourseDescription() {
         </div>
 
         {/* Related Courses Section */}
-        <div className="mt-12 w-full max-w-screen-lg text-center bg-gray-800 p-8 rounded-lg shadow-lg">
+        <div className="mt-12 w-full max-w-screen-lg text-center dark:bg-gray-800 bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-3xl text-yellow-400 font-bold mb-6">
             Related Courses
           </h2>
@@ -163,7 +180,12 @@ function CourseDescription() {
         {/* Floating Subscribe Button (Sticky) */}
         <div className="fixed bottom-16 right-6 z-10">
           {role !== "ADMIN" && data?.subscription?.status !== "ACTIVE" && (
-            <button onClick={()=>{navigate("/checkout")}} className="bg-yellow-500 text-lg rounded-xl font-semibold px-6 py-2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl">
+            <button
+              onClick={() => {
+                navigate("/checkout");
+              }}
+              className="bg-yellow-500 text-lg rounded-xl font-semibold px-6 py-2 hover:bg-yellow-400 focus:outline-none transition ease-in-out duration-300 transform hover:scale-105 shadow-xl"
+            >
               Purchase
             </button>
           )}

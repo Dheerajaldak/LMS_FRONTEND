@@ -9,7 +9,7 @@ function Footer() {
       <footer className="relative left-0 bottom-0 py-4 px-4 sm:py-5 sm:px-16 flex flex-col sm:flex-row items-center justify-between text-white bg-gray-800">
         {/* Copyright Text */}
         <section className="text-sm sm:text-base text-center sm:text-left mb-3 sm:mb-0">
-          <span>&#169; Copyright {year} | All rights reserved</span>
+          <span>&#169; {year} LMS Platform. All rights reserved.</span>
         </section>
 
         {/* Social Media Icons */}
@@ -17,21 +17,21 @@ function Footer() {
           <a
             href="https://github.com/Dheerajaldak"
             target="_blank" rel="noopener noreferrer"
-            className="hover:text-yellow-500 transition-all ease-in-out duration-300"
+            className="hover:text-black  transition-all ease-in-out duration-300"
           >
             <FaGithub />
           </a>
           <a
             href="https://www.instagram.com"
             target="_blank" rel="noopener noreferrer"
-            className="hover:text-yellow-500 transition-all ease-in-out duration-300"
+            className="hover:text-pink-600 transition-all ease-in-out duration-300"
           >
             <BsInstagram />
           </a>
           <a
             href="https://www.linkedin.com/in/dheeraj-aldak/"
              target="_blank" rel="noopener noreferrer"
-            className="hover:text-yellow-500 transition-all ease-in-out duration-300"
+            className="hover:text-blue-500 transition-all ease-in-out duration-300"
           >
             <BsLinkedin />
           </a>
